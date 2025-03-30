@@ -38,7 +38,7 @@ router.post('/', async (req, res) => {
     - Avoid general tips like booking tickets in advance.
     - Return the **output in a structured JSON format**:
       
-    \`\`\`json
+    give a json string which i can recover by parsing, and no other text:
     {
       "tripTitle": "Trip to ${formData.destination}",
       "days": [
@@ -61,7 +61,6 @@ router.post('/', async (req, res) => {
         }
       ]
     }
-    \`\`\`
     `;
 
     // console.log(placestovisit);
