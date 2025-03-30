@@ -21,7 +21,49 @@ router.post('/', async (req, res) => {
       });
     }
 
-    placestovisit=`Please make me a travel itenary for my trip from ${formData.source} to ${formData.destination} starting from ${formData.dateFrom} to ${formData.dateTo} (given in yyyy-mm-dd). I would like to visit ${formData.interests}.Also please keep in mind my budget is ${formData.budget} and I would like to stay in a ${formData.hotelPreference} hotel and I prefer travelling by ${formData.travelMode} and  ${formData.groupType}.My dietary preference are ${formData.dietaryPreferences}.I also have some special reqirements like :${formData.specialRequirements}.Please keep the itenary date wise with sub divisions for Detailed time of the day.Plese dont mention the obvious things like booking tickets and hotels etc in advance or general considerations like respecting local customs.`;
+    const placestovisit = `
+    Generate a travel itinerary for a trip from ${formData.source} to ${formData.destination}, 
+    starting from ${formData.dateFrom} to ${formData.dateTo} (dd-mm-yyyy). 
+    The itinerary should:
+    - Be provided **strictly in JSON format**.
+    - Include suggested hotels based on my budget **(${formData.budget})** and preference **(${formData.hotelPreference})**.
+    - Recommend places to visit based on their **proximity to each other**.
+    - Keep the itinerary **date-wise**, and within each day, **divide activities into 5-6 time blocks** (morning, late morning, afternoon, evening, and night).
+    - For each time block, mention:
+      - The location
+      - Activities planned
+      - Expected duration
+      - Alternative options (if any)
+    - Keep in mind my dietary preference **(${formData.dietaryPreferences})**.
+    - Avoid general tips like booking tickets in advance.
+    - Return the **output in a structured JSON format**:
+      
+    \`\`\`json
+    {
+      "tripTitle": "Trip to ${formData.destination}",
+      "days": [
+        {
+          "date": "yyyy-mm-dd",
+          "blocks": [
+            {
+              "time": "Morning",
+              "location": "Place Name",
+              "activities": ["Activity 1", "Activity 2"],
+              "alternative": ["Alt Activity 1", "Alt Activity 2"]
+            },
+            {
+              "time": "Afternoon",
+              "location": "Place Name",
+              "activities": ["Activity 1"],
+              "alternative": ["Alt Activity"]
+            }
+          ]
+        }
+      ]
+    }
+    \`\`\`
+    `;
+
     // console.log(placestovisit);
     /* */
     const geminiResponse = await axios.post("http://localhost:8000/gemini/generate", {
