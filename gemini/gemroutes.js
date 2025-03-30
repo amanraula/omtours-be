@@ -3,11 +3,12 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 const router=express.Router();
 const genAI = new GoogleGenerativeAI("AIzaSyAmAm3yLUEsKTBwLdY3xOcSeQFXrU8cs6A");
 
-const responses = [];
+let responses = "";
 
 //all routes
 export async function gem(req, res) {
     try {
+        responses = "";
         const { prompt } = req.body;
         console.log("Request body:", req.body);
 
@@ -19,7 +20,7 @@ export async function gem(req, res) {
         const result = await model.generateContent(prompt);
         const response = result.response;
         const text = response.text();
-        responses.push(text);
+        responses = text;
 
     console.log("Generated text:", text);
         res.json({ text });
@@ -30,7 +31,7 @@ export async function gem(req, res) {
 }
 
 export function getResponses(req,res){
-    res.json(responses);
+    return res.json(responses);
 }
 
 router.post("/generate",gem);
