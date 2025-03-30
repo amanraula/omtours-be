@@ -17,7 +17,7 @@ export async function currentwet(req, res) {
 
         const data = await response.json();
         res.status(200).json(data);
-        console.log(data);
+        //console.log(data);
 
     } catch (error) {
         res.status(500).json({ error: 'An error occurred while fetching weather data.' });
@@ -31,7 +31,7 @@ export async function futurewet(req, res) {
         return res.status(400).json({ error: 'Location is required in the request body.' });
     }
 
-    const url = `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${encodeURIComponent(location)}`;
+    const url = `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${encodeURIComponent(location)}&days=4`;
 
     try {
         const response = await fetch(url);
@@ -41,7 +41,7 @@ export async function futurewet(req, res) {
 
         const data = await response.json();
         res.status(200).json(data);
-        console.log(data);
+        //console.log(data);
     } catch (error) {
         res.status(500).json({ error: 'An error occurred while fetching future' });
     }
