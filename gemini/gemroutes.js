@@ -1,7 +1,7 @@
 import express from "express";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 const router=express.Router();
-const genAI = new GoogleGenerativeAI("AIzaSyAmAm3yLUEsKTBwLdY3xOcSeQFXrU8cs6A");
+const genAI = new GoogleGenerativeAI("AIzaSyCZJMcRXVeQYbVTfCURLLJeMh__m0kRY90");
 
 let responses = "";
 
