@@ -12,6 +12,10 @@ app.use(express.json()); // will allow us to parse req.body
 // app.use(cookieParser());
 
 app.use(cors());
+app.use("/", (req, res) => {
+  res.send("Hello from server");
+}
+);
 app.use("/plan", planroute);
 app.use("/gemini", gemRoutes);
 app.use("/weather", weatherRoutes);
