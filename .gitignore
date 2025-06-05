@@ -1,0 +1,33 @@
+.env
+node_modules
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+
+# OS junk files
+.DS_Store
+Thumbs.db
+
+# Optional npm cache directory
+.npm
+
+# Debug files
+*.tgz
+
+# IDEs
+.vscode/
+.idea/
+
+# Coverage reports
+coverage/
+
+# Build output
+dist/
+build/
