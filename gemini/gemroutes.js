@@ -1,7 +1,8 @@
 import express from "express";
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import { ENV_VARS } from "../config/envVars.js"; // Ensure you have set the GEM_API_KEY environment variable
 const router=express.Router();
-const genAI = new GoogleGenerativeAI("AIzaSyCZJMcRXVeQYbVTfCURLLJeMh__m0kRY90");
+const genAI = new GoogleGenerativeAI(ENV_VARS.GEM_API_KEY); // Ensure you have set the GEM_API_KEY environment variable
 
 let responses = "";
 
