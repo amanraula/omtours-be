@@ -7,10 +7,11 @@ export const protectRoute = async (req, res, next) => {
 		const token = req.cookies["omtours-jwt"];
 
 		if (!token) {
-			return res.status(401).json({ success:	 false, message: "Unauthorized - No Token Provided" });
+			//removed 401 error
+			return res.json({ success: false, message: "No Token Provided" });
 		}
 
-		const decoded = jwt.verify(token, "my_secret_token");
+		const decoded = jwt.verify(token, ENV_VARS.JWT_TOKEN);
 
 		if (!decoded) {
 			return res.status(401).json({ success: false, message: "Unauthorized - Invalid Token" });
