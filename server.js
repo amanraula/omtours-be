@@ -16,7 +16,7 @@ const PORT = ENV_VARS.PORT;
 app.use(express.json()); // will allow us to parse req.body
 app.use(cookieParser());
 
-app.use(cors());
+app.use(cors({ origin: "http://localhost:5173", credentials: true}));
 // app.use("/", (req, res) => {
 //   res.send("Hello from server");
 // }
