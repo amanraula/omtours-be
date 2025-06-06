@@ -13,19 +13,21 @@ const PORT = ENV_VARS.PORT;
 
 
 
-app.use(express.json()); // will allow us to parse req.body
+app.use(express.json());
 app.use(cookieParser());
-//app.set("trust proxy", true); // for secure cookies in production
+const allowedOrigins = ['https://omtours-theta.vercel.app', 'http://localhost:5173'];
+
 app.use(cors({
-   origin: "https://omtours-theta.vercel.app",
-//    origin: "http://localhost:5173", // ✅ Correct syntax
+    origin: (origin, callback) => {
+      if (allowedOrigins.includes(origin) || !origin) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
     credentials: true,
-    // exposedHeaders: ["set-cookie"] // ✅ Correct syntax
-}));// allow cross-origin requests and expose cookies
-// app.use("/", (req, res) => {
-//   res.send("Hello from server");
-// }
-// );
+   }));
+
 app.use("/api/v1/auth", authRoutes);
 app.use("/plan", planroute);
 app.use("/gemini", gemRoutes);
