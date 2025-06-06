@@ -15,11 +15,12 @@ const PORT = ENV_VARS.PORT;
 
 app.use(express.json()); // will allow us to parse req.body
 app.use(cookieParser());
-
-app.use(cors({ 
-  origin: "https://omtours-theta.vercel.app", 
-  credentials: true
-}));
+app.set("trust proxy", true); // for secure cookies in production
+app.use(cors({
+    origin: "https://omtours-theta.vercel.app",
+    credentials: true,
+    exposedHeaders: ["set-cookie"] // ✅ Correct syntax
+}));// allow cross-origin requests and expose cookies
 // app.use("/", (req, res) => {
 //   res.send("Hello from server");
 // }
