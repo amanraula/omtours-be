@@ -113,5 +113,6 @@ export async function authCheck(req, res) {
 	} catch (error) {
 		console.log("Error in authCheck controller", error.message);
 		res.status(500).json({ success: false, message: "Internal server error" });
+		throw error; // Re-throw the error to be handled by the global error handler
 	}
 }
