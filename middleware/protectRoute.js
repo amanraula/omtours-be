@@ -8,7 +8,7 @@ export const protectRoute = async (req, res, next) => {
 
 		if (!token) {
 			//removed 401 error
-			return res.json({ success: false, message: "No Token Provided" });
+			return res.status(401).json({ success: false, message: "No Token Provided" });
 		}
 
 		const decoded = jwt.verify(token, ENV_VARS.JWT_TOKEN);
