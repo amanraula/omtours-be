@@ -11,6 +11,6 @@ const router = express.Router();
 router.get("/:query", search);
 
 
-router.delete("/history/:id", removeItemFromSearchHistory);
+router.delete("/delete/:name", removeItemFromSearchHistory);
 
 export default router;

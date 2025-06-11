@@ -35,8 +35,7 @@ app.use("/gemini", gemRoutes);
 app.use("/weather", weatherRoutes);
 app.use("/search",protectRoute, searchRoutes);
 
-app.listen(PORT, () => {
-	console.log("Server started at http://localhost:" + PORT);
-	connectDB();
-});
+app.get("/health", (req, res) => res.status(200).send("OK"));
+
+
 console.log("server started at port", PORT);
