@@ -27,7 +27,7 @@ Handles authentication, tour management, weather integration, and more!
 ## 📌 Overview
 
 The **OmTours Backend** is a clean, scalable REST API built with **Node.js** and **Express.js**.  
-It connects seamlessly with the [OmTours Frontend](https://omtours-theta.vercel.app) and includes features like:
+It connects seamlessly and includes features like:
 
 - 🔒 Secure user auth (JWT + bcrypt)
 - ✈️ Tour CRUD operations
