@@ -2,7 +2,7 @@
 
 A powerful, modular 🌐 **Node.js + Express** backend powering the OmTours travel platform.  
 Handles authentication, tour management, weather integration, and more!  
-🔗 **Frontend Live**: [omtours-theta.vercel.app](https://omtours-theta.vercel.app)
+**Live**
 
 ---
 
